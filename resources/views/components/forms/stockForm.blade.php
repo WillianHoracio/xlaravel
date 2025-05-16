@@ -7,6 +7,7 @@
                 title="Nome"
                 id="name"
                 name="name"
+                width="100%"
                 value="{{ old('name') }}"
                 disabled=0
             />
@@ -15,6 +16,7 @@
                 title="Descrição"
                 id="description"
                 name="description"
+                width="100%"
                 text="{{ old('description') }}"
                 disabled=0
             />

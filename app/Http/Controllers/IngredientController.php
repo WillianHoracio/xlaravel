@@ -5,15 +5,18 @@
     use App\Http\Requests\StoreIngredientRequest;
     use Illuminate\Http\Request;
 
-    class IngredientController extends Controller{
+    class IngredientController extends Controller
+    {
 
-        public function index(){
+        public function index()
+        {
             $ingredients = Ingredient::all();
  
             return view('ingredients.index',['ingredients' => $ingredients]);
         }
 
-        public function store(StoreIngredientRequest $request){
+        public function store(StoreIngredientRequest $request)
+        {
             
             Ingredient::create([
                 'name'        => $request->name,
@@ -25,16 +28,19 @@
             return redirect()->route('ingredients.index');
         }
 
-        public function create(){
+        public function create()
+        {
             return view('ingredients.create');
         }
 
-        public function destroy(Ingredient $ingredient){
+        public function destroy(Ingredient $ingredient)
+        {
             $ingredient->delete();
             return redirect()->route('ingredients.index');
         }
 
-        public function show(Ingredient $ingredient, Request $request){
+        public function show(Ingredient $ingredient, Request $request)
+        {
             $readOnly = filter_var($request->query('blocked'), FILTER_VALIDATE_BOOLEAN);
             $ingredient = Ingredient::find($ingredient->id);
             
@@ -48,16 +54,11 @@
             ]);
         }
 
-        public function update(Request $request, Ingredient $ingredient){
-            $ingredient->update([
-                'name'        => $request->name,
-                'description' => $request->description,
-                'unit'        => $request->unit,
-                'active'      => $request->active ?? false,
-            ]);
+        public function update(Request $request, Ingredient $ingredient)
+        {
+            $ingredient->fill($request->all())->update();
 
             return redirect()->route('ingredients.index');
         }
     }
-
 

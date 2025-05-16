@@ -8,6 +8,7 @@
                 title="Nome"
                 id="name"
                 name="name"
+                width="100%"
                 value="{{ $ingredient->name }}"
                 disabled="{{ $readOnly }}"
             />
@@ -16,6 +17,7 @@
                 title="Descrição"
                 id="description"
                 name="description"
+                width="100%"
                 text="{{ $ingredient->description }}"
                 disabled="{{ $readOnly }}"
             />

@@ -18,10 +18,9 @@
                     <td>{{ $row->pivot->quantity   }}</td>
                     <td>{{ $unit[$row['unit']]     }}</td>
                     <td>
-                        <i class="bi bi-plus cursor-pointer icon-hover" style="cursor: pointer;"></i>
-                    </td>
-                    <td>
-                        <i class="bi bi-dash cursor-pointer icon-hover" style="cursor: pointer;"></i>
+                        <a href="{{ route('stock.movement',['stock' => $row->pivot->stock_id , 'item' => $row['id']]) }}">
+                            <i class="bi bi-arrow-left-right cursor-pointer icon-hover" style="cursor: pointer;"></i>
+                        </a>
                     </td>
                 </tr>
             @endforeach

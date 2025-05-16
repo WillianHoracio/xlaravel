@@ -44,4 +44,20 @@ class StockController extends Controller
 
         return view('stocks.items', ['stock' => $stock, 'ingredients' => $ingredients]);
     }
+
+    public function movement(Stock $stock, $item)
+    {
+        $ingredient = $stock ->ingredients()
+                             ->withPivot('quantity')
+                             ->where('ingredients.id', $item)
+                             ->first();
+
+        return view('stocks.movement', ['stock' => $stock, 'ingredient' => $ingredient]);
+    }
+
+    public function applyMovement(Stock $stock, $item)
+    {
+
+
+    }
 }
