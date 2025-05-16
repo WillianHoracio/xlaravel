@@ -14,7 +14,8 @@ Route::put(   '/ingredients/{ingredient}', [IngredientController::class, 'update
 Route::post(  '/ingredients/store',        [IngredientController::class, 'store'])   ->name('ingredients.store');
 Route::delete('/ingredients/{ingredient}', [IngredientController::class, 'destroy']) ->name('ingredients.destroy');
 
-Route::get(   '/stock',          [StockController::class, 'index'])  ->name('stock.index');
-Route::get(   '/stock/store',    [StockController::class, 'create']) ->name('stock.create');
-Route::post(  '/stock/store',    [StockController::class, 'store'])  ->name('stock.store');
-Route::delete('/stock/{stock}',  [StockController::class, 'destroy'])->name('stock.destroy');
+Route::get(   '/stock',               [StockController::class, 'index'])  ->name('stock.index');
+Route::get(   '/stock/store',         [StockController::class, 'create']) ->name('stock.create');
+Route::get(   '/stock/{stock}/items', [StockController::class, 'items'])   ->name('stock.items');
+Route::post(  '/stock/store',         [StockController::class, 'store'])  ->name('stock.store');
+Route::delete('/stock/{stock}',       [StockController::class, 'destroy'])->name('stock.destroy');

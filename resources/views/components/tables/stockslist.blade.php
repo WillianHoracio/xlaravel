@@ -15,10 +15,12 @@
                     <td>{{ $row['description']}}</td>
                     <td>{{ $row['active'] == 1 ? "Ativo" : "Inativo"}}</td>
                     <td>
+                        <a href="{{ route('stock.items', $row['id']) }}">
                             <i class="bi bi-search cursor-pointer icon-hover" style="cursor: pointer;"></i>
+                        </a>
                     </td>
                     <td>
-                            <i class="bi bi-pencil cursor-pointer icon-hover" style="cursor: pointer;"></i>
+                        <i class="bi bi-pencil cursor-pointer icon-hover" style="cursor: pointer;"></i>
                     </td>
                     <td>
                         <form action="{{ route('stock.destroy', $row['id']) }}" method="POST" style="display:inline">
