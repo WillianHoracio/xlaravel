@@ -18,6 +18,20 @@ class Stock extends Model
             ->withPivot('quantity')
             ->withTimestamps();
     }
+
+    public function stockMovements()
+    {
+        return $this->hasMany(StockMovement::class);
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($stock) {
+            Ingredient::all()->each(function ($ingredient) use ($stock) {
+                $stock->ingredients()->attach($ingredient->id, ['quantity' => 0]);
+            });
+        });
+    }
  
     /** @use HasFactory<\Database\Factories\StockFactory> */
     use HasFactory;

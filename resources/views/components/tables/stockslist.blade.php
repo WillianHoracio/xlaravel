@@ -15,7 +15,7 @@
                     <td>{{ $row['description']}}</td>
                     <td>{{ $row['active'] == 1 ? "Ativo" : "Inativo"}}</td>
                     <td>
-                        <a href="{{ route('stock.items', $row['id']) }}">
+                        <a href="{{ route('stock.ingredients', $row['id']) }}">
                             <i class="bi bi-search cursor-pointer icon-hover" style="cursor: pointer;"></i>
                         </a>
                     </td>

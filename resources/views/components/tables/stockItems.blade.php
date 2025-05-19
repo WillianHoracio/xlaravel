@@ -18,7 +18,7 @@
                     <td>{{ $row->pivot->quantity   }}</td>
                     <td>{{ $unit[$row['unit']]     }}</td>
                     <td>
-                        <a href="{{ route('stock.movement',['stock' => $row->pivot->stock_id , 'item' => $row['id']]) }}">
+                        <a href="{{ route('stock.ingredient',['stock' => $row->pivot->stock_id , 'ingredient' => $row['id']]) }}">
                             <i class="bi bi-arrow-left-right cursor-pointer icon-hover" style="cursor: pointer;"></i>
                         </a>
                     </td>

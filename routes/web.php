@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\StockMovementController;
 
 Route::get('/', function () {
     return view('Xistema');
@@ -16,8 +17,9 @@ Route::delete('/ingredients/{ingredient}',     [IngredientController::class, 'de
 
 Route::get(   '/stock',                        [StockController::class, 'index'])        ->name('stock.index');
 Route::get(   '/stock/store',                  [StockController::class, 'create'])       ->name('stock.create');
-Route::get(   '/stock/{stock}/items',          [StockController::class, 'items'])        ->name('stock.items');
-Route::get(   '/stock/{stock}/movement/{item}',[StockController::class, 'movement'])     ->name('stock.movement');
-Route::post(  '/stock/{stock}/movement/{item}',[StockController::class, 'applyMovement'])->name('stock.applyMovement');
+Route::get(   '/stock/{stock}/ingredients',    [StockController::class, 'ingredients'])  ->name('stock.ingredients');
 Route::post(  '/stock/store',                  [StockController::class, 'store'])        ->name('stock.store');
 Route::delete('/stock/{stock}',                [StockController::class, 'destroy'])      ->name('stock.destroy');
+Route::get(   '/stock/{stock}/ingredient/{ingredient}',[StockController::class, 'ingredient'])     ->name('stock.ingredient');
+
+Route::post(  '/stock/{stock}/move/{ingredient}'    ,[StockMovementController::class, 'move'])->name('movement.move');

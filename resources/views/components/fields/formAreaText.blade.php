@@ -10,9 +10,11 @@
         class="form-control" 
         id="{{ $id }}" 
         rows="3" 
-        name="{{ $name }}" 
+        name="{{ $name }}"
+        placeholder="{{ $placeholder ?? '' }}"
         style="{{ $style }}"
         {{ $disabled }}
+
     >{{ $text }}</textarea>
     @error($name)
         <div class="text-danger">{{ $message }}</div>

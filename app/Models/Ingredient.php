@@ -16,6 +16,11 @@
                 ->withTimestamps();
         }
 
+        public function stockMovements()
+        {
+            return $this->hasMany(StockMovement::class);
+        }
+
         protected static function booted()
         {
             static::created(function ($ingredient) {

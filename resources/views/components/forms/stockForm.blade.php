@@ -22,10 +22,10 @@
             />
 
             <x-fields.formCheckBox
-                title="Unidade"
-                id="unit"
-                name="unit"
-                value="{{ old('unit') }}"
+                title="Ativo"
+                id="active"
+                name="active"
+                value="1"
                 disabled=0
             />
             
