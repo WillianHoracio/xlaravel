@@ -8,6 +8,7 @@ use App\Models\Ingredient;
 class StockController extends Controller
 {
     const DEFAULT_STOCK_ID = 1;
+
     public function index()
     {
         $stocks = Stock::all();
@@ -47,7 +48,7 @@ class StockController extends Controller
         $ingredients = $stock->ingredients()->get();
 
         return view('stocks.items', [
-            'stock' => $stock,
+            'stock'       => $stock,
             'ingredients' => $ingredients
         ]);
     }
@@ -55,11 +56,20 @@ class StockController extends Controller
     public function ingredient(Stock $stock, Ingredient $ingredient)
     {
         $ingredientData = $stock ->ingredients()->find($ingredient->id);
+        $movements = $this->getIngredientMovements($stock, $ingredient);
         
         return view('stocks.movement', [
-            'stock' => $stock,
-            'ingredient' => $ingredientData
+            'stock'      => $stock,
+            'ingredient' => $ingredientData,
+            'movements'  => $movements
         ]);
     }
 
+    public function getIngredientMovements(Stock $stock, Ingredient $ingredient)
+    {
+        return $stock->stockMovements()
+            ->where('ingredient_id', $ingredient->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
 }

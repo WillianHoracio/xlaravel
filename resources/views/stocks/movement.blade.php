@@ -1,9 +1,7 @@
 @php
-
     $quantity = $ingredient->pivot->quantity;
     //$disabled = $quantity <= 0;    
     $unit =[1 => "UN", 2 => "L",3 => "Kg"];
-
 @endphp
 
 <x-structure title="Cadastro" header="{{ $stock->name }}">
@@ -68,4 +66,24 @@
         </div>
     </form>
     
+    <div class="row">
+        <div class="container-flexible d-flex justify-content-center" style="margin-top: 20px;">
+            <h1 class="fs-1 fw-bold">HISTÓRICO</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container-flexible d-flex justify-content-center" style="height: 500px;">
+            @php
+                $headers = ['Quantidade', 'Tipo', 'Descrição', 'Data'];
+            @endphp
+            <div class="col-9" style="margin-top: 20px; width: 90%;">
+                <x-tables.stockMovementList
+                    :headers="$headers"
+                    :rows="$movements"
+                />
+            </div>
+        </div>
+    </div>
+
 </x-structure>
