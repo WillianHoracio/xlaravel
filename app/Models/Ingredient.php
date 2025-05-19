@@ -24,7 +24,10 @@
         protected static function booted()
         {
             static::created(function ($ingredient) {
-                $ingredient->stocks()->attach(1, ['quantity' => 0]);
+                \App\Models\Stock::all()->each(function ($stock) use ($ingredient) {
+                    $stock->ingredients()->attach($ingredient->id, ['quantity' => 0]);
+                });
             });
         }
+
     }
